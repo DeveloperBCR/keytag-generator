@@ -31,13 +31,15 @@
         .print-row {
             display: flex;
             flex-direction: row;
+            margin-bottom: 0mm;
             margin-top: -0.15mm; /* TRICK: Overlaps horizontal lines to prevent double-stacking */
+
         }
 
         .tag-container {
             position: relative;
-            width: 76.2mm; 
-            height: 22.1mm;
+            width: 72mm; 
+            height: 21mm;
             background: white;
             margin-left: -0.15mm; /* TRICK: Overlaps vertical lines to prevent double-stacking */
         }
@@ -47,12 +49,13 @@
             flex-direction: row;
             width: 100%;
             height: 100%;
-            /* border: 0.15mm solid var(--guide-color);  */
+            border: 0.15mm solid var(--guide-color); 
+            /* box-sizing: border-box; */
         }
 
         .keytag-box {
-            width: 38.1mm;
-            height: 22.1mm;
+            width: 36mm;
+            height: 21mm;
             box-sizing: border-box;
             overflow: hidden;
             display: flex;
@@ -64,6 +67,7 @@
             padding: 1mm; 
             justify-content: center; 
             align-items: center;
+            text-align: center;
             /* border-right: 0.15mm solid var(--guide-color);  */
         }
 
@@ -75,11 +79,13 @@
         }
 
         /* Ticks sit at 0 so they align perfectly with the box edges */
-        .v-tick { width: 0.15mm; height: 3mm; }
+        /* .v-tick { width: 0.15mm; height: 3mm; } */
+        .v-tick { width: 0mm; height: 0mm; }
         .v-top { top: 0; } 
         .v-bottom { bottom: 0; }
         
-        .h-tick { width: 3mm; height: 0.15mm; }
+        /* .h-tick { width: 3mm; height: 0.15mm; } */
+        .h-tick { width: 0mm; height: 0mm; }
         .h-left { left: 0; }
         .h-right { right: 0; }
 
@@ -92,11 +98,11 @@
         .rego-badge { font-size: 9pt; font-weight: bold; border: 1.2pt solid black; padding: 0 4pt; margin-top: 1pt; line-height: 1.2; }
         .logo-area { height: 55%; width: 100%; display: flex; align-items: center; justify-content: center; border-bottom: 0.1mm solid #eee; }
         .logo-area img { max-height: 90%; max-width: 90%; object-fit: contain; }
-        .bottom-area { height: 45%; width: 100%; display: flex; }
+        .bottom-area { height: 40%; width: 100%; display: flex; }
         .qr-box { width: 33.33%; border-right: 0.1mm solid #eee; display: flex; align-items: center; justify-content: center; }
         .qr-box img { height: 8.5mm; width: 8.5mm; }
         .contact-box { width: 66.66%; display: flex; align-items: center; justify-content: center; padding: 1mm; }
-        .contact-info { font-size: 6pt; font-weight: 800; text-align: center; line-height: 1; }
+        .contact-info { font-size: 5.8pt; font-weight: 800; text-align: center; line-height: 1; }
         .spare-label { position: absolute; top: 0.5mm; right: 1mm; font-size: 4.5pt; font-weight: bold; color: #bbb; }
 
         /* --- PREVIEW AREA --- */
