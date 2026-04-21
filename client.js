@@ -4,6 +4,7 @@ import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase
 let dataCache = null;
 const container = document.getElementById("tagInputsContainer");
 const LOGO_URL = "./BCRLogo_rgb.jpg";
+const QR_URL = "./QR-Code.png"
 
 async function init() {
     const snap = await getDoc(doc(db, "vehicleData", "main"));
@@ -127,7 +128,7 @@ document.getElementById("printBtn").onclick = async () => {
                         <div class="logo-area"><img src="${LOGO_URL}"></div>
                         <div class="bottom-area">
                             <div class="qr-box">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://bargaincarrentals.com.au">
+                                <img src="${QR_URL}" class="qr-img">
                             </div>
                             <div class="contact-box">
                                 <div class="contact-info">Ph: +61 3 6165 0838<br>bargaincarrentals.com.au</div>
@@ -222,7 +223,7 @@ generateBtn.onclick = async () => {
                         <div class="logo-area"><img src="${LOGO_URL}"></div>
                         <div class="bottom-area">
                             <div class="qr-box">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://bargaincarrentals.com.au">
+                                <img src="${QR_URL}" class="qr-img">
                             </div>
                             <div class="contact-box">
                                 <div class="contact-info">Ph: +61 3 6165 0838<br>bargaincarrentals.com.au</div>
