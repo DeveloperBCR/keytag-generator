@@ -24,17 +24,17 @@ const colorInput = document.getElementById("colorInput");
 const adminPanel = document.getElementById("adminPanel");
 const loginBtn = document.getElementById("loginBtn");
 
-// --- EVENT LISTENERS (Filtering Logic) ---
+// --- EVENT LISTENERS (Filtering Logic) ---  
 
 makeInput.addEventListener("input", (e) => {
   populateModelList(e.target.value.toLowerCase());
   modelInput.value = "";
-  categoryInput.value = "";
+  // categoryInput.value = "";
 });
 
 modelInput.addEventListener("input", (e) => {
-  populateCategoryList(makeInput.value.toLowerCase(), e.target.value.toLowerCase());
-  categoryInput.value = "";
+  // populateCategoryList(makeInput.value.toLowerCase(), e.target.value.toLowerCase());
+  // categoryInput.value = "";
 });
 
 removeMakeInput.addEventListener("input", (e) => {
@@ -45,7 +45,7 @@ removeMakeInput.addEventListener("input", (e) => {
 
 removeModelInput.addEventListener("input", (e) => {
   populateCategoryList(removeMakeInput.value.toLowerCase(), e.target.value.toLowerCase());
-  removeCategoryInput.value = "";
+  removeCategoryList.value = "";
 });
 
 // --- AUTH LOGIC ---
@@ -79,6 +79,26 @@ async function loadData() {
 function updateAllDatalists() {
   populateMakeList();
   populateColorList();
+  populateGlobalCategoryList();
+}
+
+function populateGlobalCategoryList() {
+  const list = document.getElementById("categoryList");
+  const allCategories = new Set();
+
+  // Iterate through all makes and models to find every unique category
+  Object.values(dataCache.makes || {}).forEach(makeObj => {
+    Object.values(makeObj.models || {}).forEach(modelObj => {
+      (modelObj.categories || []).forEach(cat => {
+        if (cat) allCategories.add(cat.toUpperCase());
+      });
+    });
+  });
+
+  // Sort and populate the datalist
+  const sortedCategories = Array.from(allCategories).sort();
+  list.innerHTML = sortedCategories
+    .map(c => `<option value="${c}">`).join("");
 }
 
 function populateMakeList() {
@@ -104,7 +124,7 @@ function populateModelList(make) {
 }
 
 function populateCategoryList(make, model) {
-  const list = document.getElementById("categoryList");
+  const list = document.getElementById("removeCategoryList");
   const categories = dataCache.makes[make]?.models[model]?.categories || [];
   
   // Sort the categories array alphabetically
