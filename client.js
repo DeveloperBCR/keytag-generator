@@ -1,5 +1,45 @@
 import { db } from "./firebase.js";
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { auth } from "./firebase.js";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+// ==============================================================
+//  Auth
+// ==============================================================
+
+const loginBtn = document.getElementById("loginBtn");
+const clientApp = document.getElementById("clientApp");
+
+loginBtn.onclick = async () => {
+  const provider = new GoogleAuthProvider();
+  await signInWithPopup(auth, provider);
+};
+
+onAuthStateChanged(auth, (user) => {
+  const isAllowed =
+    user &&
+    user.email &&
+    user.email.endsWith("@bargaincarrentals.com.au"); // keep your domain check
+
+  if (isAllowed) {
+    clientApp.style.display = "block";
+    loginBtn.style.display = "none";
+    init(); 
+  } else {
+    clientApp.style.display = "none";
+    loginBtn.style.display = "block";
+  }
+});
+
+
+
+// ==============================================================
+// App
+// ==============================================================
 
 let dataCache = null;
 const container = document.getElementById("tagInputsContainer");
@@ -272,4 +312,3 @@ clearPreviewBtn.onclick = () => {
 
 
 document.getElementById("addTagBtn").onclick = addTagRow;
-init();

@@ -128,36 +128,42 @@
     </style>
 </head>
 <body>
+    <button id="loginBtn" class="print-btn" style="display:block; margin: 20px auto;">
+        Login with Google
+    </button>
 
-<div class="container no-print">
-    <h2>Keytag Generator</h2>
-    
-    <div id="tagInputsContainer">
-        </div>
+<div id="clientApp" style="display:none;">
 
-    <div style="text-align: center; margin-top: 20px;">
-        <button class="add-btn" id="addTagBtn">+ Add Another Tag</button>
-        <button class="print-btn" id="printBtn">Generate & Print</button>
-    </div>
-</div>
-<div class="container no-print">
-        <h2>Preview</h2>
+    <div class="container no-print">
+        <h2>Keytag Generator</h2>
         
-        <div id="tagInputsContainer"></div>
+        <div id="tagInputsContainer">
+            </div>
 
         <div style="text-align: center; margin-top: 20px;">
-            <!-- <button class="add-btn" id="addTagBtn">+ Add Another Tag</button> -->
-            <button class="print-btn" id="generateBtn" style="background: var(--primary);">Generate Preview</button>
+            <button class="add-btn" id="addTagBtn">+ Add Another Tag</button>
+            <button class="print-btn" id="printBtn">Generate & Print</button>
         </div>
     </div>
+    <div class="container no-print">
+            <h2>Preview</h2>
+            
+            <div id="tagInputsContainer"></div>
 
-    <div id="printActionBar" class="action-bar no-print">
-        <p><strong>Preview Mode:</strong> Inspect the tags below before printing.</p>
-        <button class="print-btn" id="finalPrintBtn">Everything looks good - Print Now</button>
-        <button class="remove-btn" id="clearPreviewBtn" style="margin-left:10px;">Clear Preview</button>
-    </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <!-- <button class="add-btn" id="addTagBtn">+ Add Another Tag</button> -->
+                <button class="print-btn" id="generateBtn" style="background: var(--primary);">Generate Preview</button>
+            </div>
+        </div>
 
-<div id="printArea"></div>
+        <div id="printActionBar" class="action-bar no-print">
+            <p><strong>Preview Mode:</strong> Inspect the tags below before printing.</p>
+            <button class="print-btn" id="finalPrintBtn">Everything looks good - Print Now</button>
+            <button class="remove-btn" id="clearPreviewBtn" style="margin-left:10px;">Clear Preview</button>
+        </div>
+
+    <div id="printArea"></div>
+</div>
 
 <datalist id="makeList"></datalist>
 <datalist id="modelList"></datalist>
